@@ -1,0 +1,16 @@
+K. Liu, S. Xu, G. Xu, M. Zhang, D. Sun et al., “A review of android malware detection approaches
+based on machine learning,” IEEE Access, vol. 8, pp. 124579–124607, 2020.
+
+M. A. Khan and J. Kim, “Toward developing efcient Conv-AE-based intrusion detection system using
+the heterogeneous dataset,” Electronics, vol. 9, no. 11, pp. 1–17, 2020.
+
+C. Khammassi and S. Krichen, “A GA-LR wrapper approach for feature selection in network intrusion
+detection,” Computers and Security, vol. 70, no. 2, pp. 255–277, 2017.
+
+Rhishabh Hattarki, Shruti Houji and Manisha Dhage, “Real Time Intrusion Detection System For IoT 
+Networks,” 2021 6th International Conference for Convergence in Technology (I2CT) 
+Pune, India. Apr 02-04, 2021.
+
+J˛edrzej Bieniasz and Krzysztof Szczypiorski, “Dataset Generation for Development of Multi-Node Cyber
+Threat Detection Systems,” Electronics 2021, 10, 2711   
+
