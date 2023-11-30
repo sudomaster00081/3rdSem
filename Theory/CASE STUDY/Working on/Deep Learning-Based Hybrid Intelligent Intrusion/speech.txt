@@ -34,7 +34,7 @@ slide-3
 Intrusion Detection Systems (IDS) are a critical component of
 proactive security measures, designed to detect and respond to
 malicious activities in a network.
-ARE GENERALLY OF two kinds, Networkbased intrusion detection system and Host based intrusion detection system.
+they ARE GENERALLY OF two kinds, Networkbased intrusion detection system and Host based intrusion detection system.
 intrusion detection system can be of either software
 or as an hardware component. in most of the cases its software.
 it can effectively Identify and respond to security incidents in real-time,
@@ -78,7 +78,7 @@ emerges as a promising solution to enhance the accuracy and efficiency of intrus
 
 slide-6
 
-we know that  Today, cyber-space is known as the fth battlespace, following land, air, space, and sea;
+we know that  Today, cyber-space is known as the fifth battlespace, following land, air, space, and sea;
 cyber warfare can affect the military strategies and activities that are associated with national
 security.
 
@@ -89,8 +89,8 @@ and enhance accuracy and efficiency.
 
 We seek to detect unknown attacks, reduce false positives, and identify various threats that might otherwise go 
 unnoticed.
-The real-world applications of our study are vast. The outcomes have the potential to significantly 
-improve cybersecurity measures, 
+The real-world applications of the study are vast. The outcomes have the potential to significantly 
+improve cybersecurity measures,     
 protecting valuable data and preventing financial losses. Furthermore, by staying ahead of evolving threats, 
 the research can provide invaluable support to Nations and  organizations in fortifying their security postures
 In summary, the significance of our study lies in its potential to enhance IDS accuracy, impact 
@@ -132,7 +132,7 @@ providing valuable insights and methodologies for advancing the capabilities of 
 into the methodologies
 
 slide-9
-Now, let's delve into the core of our research—the Hybrid Intelligent Approach. This methodology represents a 
+Now, let's delve into the core of the research—the Hybrid Intelligent Approach. This methodology represents a 
 fusion of deep learning and traditional machine learning techniques, 
 capitalizing on the strengths of each to create a powerful and effective intrusion detection system
 In our approach, deep learning takes the lead in extracting high-level features directly from raw network data. 
@@ -150,14 +150,27 @@ Short-Term Memory Autoencoder (LSTMAE)
 
 slide-10
 
-you'll find a visual representation of our Hybrid IDS architecture. 
+you'll find a visual representation of the Hybrid IDS architecture. 
 It's designed with a two-stage approach—Stage-1 and Stage-2—each playing a crucial role in the detection process.
 Network traffic is preprocessed for both Spark MLlib and DL methods.
 Stage-1 Anomaly detection using Spark MLlib classiers.
-Stage-2 Misuse detection using state-of-the-art deep learning approaches such LSTMAE
+Stage-2 Misuse detection using state-of-the-art deep learning approaches such as LSTMAE
 
 
 slide 11:
+This stage is where traditional machine learning algorithms, including Logistic regression (LR) and 
+Extreme Gradient Boosting (XGB), take center stage for classification. The Hybrid IDS combines Host-based 
+Intrusion Detection 
+System (HIDS) and Network-based Intrusion Detection System (NIDS) components to provide a complete and enhanced 
+security approach. This adaptability makes our system effective against dynamic threats, a crucial characteristic 
+in the rapidly evolving cybersecurity landscape.
+
+Stage-2: 
+Here, we preprocess network traffic for the Spark MLlib and Long Short-Term Memory Autoencoder (LSTMAE) 
+modules. Deep learning steps in to extract high-level features directly from the raw network data, setting the stage
+for a comprehensive understanding of the traffic.
+
+
 slide-12:
 Now, let's focus on Stage-1 of our Hybrid Intelligent Intrusion Detection System, where Spark MLlib plays a 
 pivotal role in anomaly detection.
@@ -244,7 +257,7 @@ consecutve 7 days in 2010, with sizes ranging from 3.95 GB to 23.04 GB per day.
 Each day's data reflects different cyber threats, contributing to the diversity and richness of the dataset.
 The ISCX-2012 dataset is crucial for our research due to its size, diversity, and accurate representation of 
 real-world cyber threats. 
-It serves as a robust foundation for testing and evaluating the performance of our Hybrid Intelligent Intrusion 
+It serves as a robust foundation for testing and evaluating the performance of The Hybrid Intelligent Intrusion 
 Detection System
 
 
@@ -255,12 +268,13 @@ In the Figure, you'll find a visual representation of the Daily Traffic ISCX-IDS
 
 
 SLIDE-18
-let's delve into how we utilized the ISCX-2012 dataset to demonstrate the effectiveness of our Hybrid Intelligent 
+let's delve into how the the ISCX-2012 dataset is utilized  to demonstrate the effectiveness of The Hybrid Intelligent 
 Intrusion Detection System (HIIDS).
 The ISCX-2012 dataset, with its up-to-date patterns created by the Canadian Institute of Cybersecurity, 
 was carefully selected for its suitability in testing the capabilities of HIIDS. 
 This dataset serves as a robust foundation, reflecting real-world cyber threats and providing a diverse set of 
 scenarios.
+used 80 % of the dataset as Training and 20% for testing with 10-fold cross validation test
 The experimental results speak volumes about the effectiveness of HIIDS. It outperformed other intrusion detection 
 systems in 
 terms of both accuracy and efficiency, achieving an impressive accuracy rate of 97.52%. 
@@ -295,16 +309,20 @@ systems in the face of ever-changing and sophisticated cyber threats
 SLIDE-21
 let's take a moment to highlight the strengths of our proposed Hybrid Intelligent Intrusion Detection System (HIIDS)
 Strengths:
-One of the key strengths lies in the synergistic combination of two machine learning techniques—deep learning 
+One of the key strengths lies in the combination of two machine learning techniques—deep learning 
 and traditional machine learning. 
 This integration enhances the accuracy and efficiency of the intrusion detection system, providing a 
 comprehensive and effective approach to cybersecurity.
 A significant advantage of HIIDS is its ability to detect unknown attacks. This capability is 
-crucial in the ever-evolving landscape of cyber threats, where novel and sophisticated attack techniques constantly emerge.
+crucial in the ever-evolving landscape of cyber threats, where novel and sophisticated attack techniques constantly 
+emerge.
 Furthermore, HIIDS addresses a common issue in intrusion detection systems by reducing false positives. 
-This not only improves the overall efficiency of the system but also mitigates the challenges associated with alert fatigue.
-The high detection rate and low false positive rate demonstrated in our experiments underscore the effectiveness of HIIDS. These strengths 
-position our system as a promising candidate for real-world applications, contributing to the improvement of cybersecurity practices
+This not only improves the overall efficiency of the system but also mitigates the challenges associated with alert
+fatigue.
+The high detection rate and low false positive rate demonstrated in our experiments underscore the effectiveness of 
+HIIDS. These strengths 
+position our system as a promising candidate for real-world applications, contributing to the improvement of 
+cybersecurity practices
 
 
 
@@ -313,39 +331,52 @@ As we evaluate the strengths of our proposed Hybrid Intelligent Intrusion Detect
 it's important to acknowledge areas where there is room for improvement.
 Firstly, HIIDS requires substantial data for training, and this process can be time and resource-intensive. 
 Acquiring and preparing large datasets for training purposes can pose challenges in terms of both time and resources.
-Additionally, while HIIDS demonstrates effectiveness against a range of cyber threats, it may face challenges when dealing 
-with highly sophisticated attacks specifically designed to evade detection. The constant evolution of attack techniques 
+Additionally, while HIIDS demonstrates effectiveness against a range of cyber threats, it may face challenges when 
+dealing 
+with highly sophisticated attacks specifically designed to evade detection. The constant evolution of attack 
+techniques 
 necessitates ongoing refinement of intrusion detection systems.
 Another consideration is the potential for false negatives, which means that some attacks may go undetected. 
 While HIIDS strives for a high detection rate, addressing false negatives remains an ongoing challenge
-Furthermore, the need for preprocessing network traffic data in HIIDS may impact its suitability for real-time detection. 
-This preprocessing step introduces a delay in the detection process, which may not be optimal for situations requiring immediate response.
-These areas of improvement highlight the evolving nature of intrusion detection systems. As we move forward, addressing these challenges will be 
-crucial in further enhancing the capabilities of HIIDS and ensuring its effectiveness in a dynamic and ever-changing cybersecurity landscape
+Furthermore, the need for preprocessing network traffic data in HIIDS may impact its suitability for real-time 
+detection. 
+This preprocessing step introduces a delay in the detection process, which may not be optimal for situations 
+requiring immediate response.
+These areas of improvement highlight the evolving nature of intrusion detection systems. As we move forward, 
+addressing these challenges will be 
+crucial in further enhancing the capabilities of HIIDS and ensuring its effectiveness in a dynamic and 
+ever-changing cybersecurity landscape
 
 
 SLIDE-23
 As we conclude our presentation, it's essential to outline the future scopes that can further elevate the 
-capabilities of our proposed Hybrid Intelligent Intrusion Detection System (HIIDS). These areas of development aim to address the 
+capabilities of our proposed Hybrid Intelligent Intrusion Detection System (HIIDS). These areas of development 
+aim to address the 
 evolving cybersecurity challenges and enhance the system's effectiveness. Let's delve into each future scope
 Suggestions for Future Research:
 Advanced Deep Learning Algorithms:
 
-Integrate advanced deep learning models such as Convolutional Neural Networks (CNNs) and Recurrent Neural Networks (RNNs) 
+Integrate advanced deep learning models such as Convolutional Neural Networks (CNNs) and Recurrent Neural Networks 
+(RNNs) 
 such as Gated Recurrent Units (GRU) to further improve intrusion detection accuracy. These sophisticated 
-models can capture intricate patterns in network traffic data, enhancing the system's ability to identify and classify cyber threats.
+models can capture intricate patterns in network traffic data, enhancing the system's ability to identify and 
+classify cyber threats.
 
 Enhanced Preprocessing:
-Refine the preprocessing stage by incorporating advanced feature extraction and data cleaning techniques. This refinement 
-can contribute to better data representation, ultimately improving the accuracy and efficiency of the intrusion detection system.
+Refine the preprocessing stage by incorporating advanced feature extraction and data cleaning techniques. This 
+refinement 
+can contribute to better data representation, ultimately improving the accuracy and efficiency of the intrusion 
+detection system.
 
 Diverse Dataset Evaluation:
 Evaluate the system's performance on diverse datasets representing various cyber threats. 
-This ensures that HIIDS remains effective across a broad spectrum of scenarios, adapting to the dynamic nature of cybersecurity threats.
+This ensures that HIIDS remains effective across a broad spectrum of scenarios, adapting to the dynamic nature of 
+cybersecurity threats.
 
 Real-Time Detection System:
 Develop a real-time intrusion detection system that enables prompt threat detection and response. 
-Minimizing the delay introduced by preprocessing network traffic data can be pivotal in situations where immediate action is required.
+Minimizing the delay introduced by preprocessing network traffic data can be pivotal in situations where immediate 
+action is required.
 
 Explore the applicability of the proposed approach to other domains:
 Investigate whether the proposed HIIDS approach can be applied to
