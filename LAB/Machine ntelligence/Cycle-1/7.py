@@ -1,0 +1,1 @@
+# Download any OCR dataset and perform the classification with SVM and KNN. Compare the obtained result

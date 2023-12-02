@@ -1,0 +1,1 @@
+# Display the histogram of the gray scale image

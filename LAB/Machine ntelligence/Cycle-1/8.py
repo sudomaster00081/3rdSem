@@ -1,0 +1,1 @@
+# Implement any two segmentation algorithms and compare the efficiency with ground truth

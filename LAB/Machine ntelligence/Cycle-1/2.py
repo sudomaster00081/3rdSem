@@ -1,0 +1,1 @@
+# Read an image and display the RGB channel images separately.
