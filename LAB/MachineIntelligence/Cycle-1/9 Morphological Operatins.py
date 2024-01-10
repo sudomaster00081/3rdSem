@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Read the input image
-image_path = "LAB\Machine ntelligence\Cycle-1\converted_image.jpg"
+image_path = "LAB\MachineIntelligence\Cycle-1\converted_image.jpg"
 original_image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
 
 # Define a kernel for morphological operations

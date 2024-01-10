@@ -32,7 +32,7 @@ def convert_to_grayscale(image_path, output_path):
     grayscale_img.show()
 
 # Example usage:
-input_image_path = "LAB\Machine ntelligence\Cycle-1\image.jpg"
-output_image_path = "LAB\Machine ntelligence\Cycle-1\converted_image.jpg"
+input_image_path = "LAB\MachineIntelligence\Cycle-1\image.jpg"
+output_image_path = "LAB\MachineIntelligence\Cycle-1\converted_image.jpg"
 
 convert_to_grayscale(input_image_path, output_image_path)

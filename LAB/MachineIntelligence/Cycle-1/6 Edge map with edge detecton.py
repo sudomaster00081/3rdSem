@@ -26,5 +26,5 @@ def display_edge_map(image_path, low_threshold=50, high_threshold=150):
     plt.show()
 
 # Example usage:
-input_image_path = "LAB\Machine ntelligence\Cycle-1\image.jpg"
+input_image_path = "LAB\MachineIntelligence\Cycle-1\image.jpg"
 display_edge_map(input_image_path)

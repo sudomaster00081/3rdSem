@@ -23,6 +23,6 @@ def convert_to_binary(image_path, threshold_value=128):
     plt.show()
 
 # Example usage:
-input_image_path = "LAB\Machine ntelligence\Cycle-1\image.jpg"
+input_image_path = "LAB\MachineIntelligence\Cycle-1\image.jpg"
 threshold_value = 128
 convert_to_binary(input_image_path, threshold_value)

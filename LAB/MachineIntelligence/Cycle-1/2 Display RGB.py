@@ -30,5 +30,5 @@ def display_rgb_channels(image_path):
     plt.show()
 
 # Example usage:
-input_image_path = "LAB\Machine ntelligence\Cycle-1\image.jpg"
+input_image_path = "LAB\Machineintelligence\Cycle-1\image.jpg"
 display_rgb_channels(input_image_path)

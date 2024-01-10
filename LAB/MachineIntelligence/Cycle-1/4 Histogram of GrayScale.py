@@ -25,5 +25,5 @@ def display_histogram(image_path):
     plt.show()
 
 # Example usage:
-input_image_path = "LAB\Machine ntelligence\Cycle-1\converted_image.jpg"
+input_image_path = "LAB\MachineIntelligence\Cycle-1\converted_image.jpg"
 display_histogram(input_image_path)
