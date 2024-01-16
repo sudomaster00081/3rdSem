@@ -12,27 +12,27 @@ mnist = fetch_openml('mnist_784', version=1)
 X = np.array(mnist.data.astype('int'))
 y = np.array(mnist.target.astype('int'))
 
-# Split the dataset into training and testing sets
+# Spliting the dataset
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Support Vector Machine (SVM) Classifier
+# SVM
 svm_classifier = svm.SVC()
 svm_classifier.fit(X_train, y_train)
 svm_predictions = svm_classifier.predict(X_test)
 
-# k-Nearest Neighbors (KNN) Classifier
+# KNN
 knn_classifier = neighbors.KNeighborsClassifier(n_neighbors=5)
 knn_classifier.fit(X_train, y_train)
 knn_predictions = knn_classifier.predict(X_test)
 
-# Compare the results
+# Comparison
 svm_accuracy = metrics.accuracy_score(y_test, svm_predictions)
 knn_accuracy = metrics.accuracy_score(y_test, knn_predictions)
 
 print(f"SVM Accuracy: {svm_accuracy:.4f}")
 print(f"KNN Accuracy: {knn_accuracy:.4f}")
 
-# Display a few examples and their predictions
+# Display
 fig, axes = plt.subplots(1, 5, figsize=(10, 2))
 for i, ax in enumerate(axes):
     ax.imshow(X_test[i].reshape(28, 28), cmap='gray')

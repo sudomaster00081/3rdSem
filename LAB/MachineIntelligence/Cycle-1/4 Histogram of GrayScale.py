@@ -4,18 +4,18 @@ import cv2
 import matplotlib.pyplot as plt
 
 def display_histogram(image_path):
-    # Read the image in grayscale
+    # image in grayscale
     img = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
 
-    # Calculate the histogram
+    # Calculation of histogram
     hist = cv2.calcHist([img], [0], None, [256], [0, 256])
 
-    # Display the original image
+    # Display 
     plt.subplot(2, 1, 1)
     plt.imshow(img, cmap='gray')
     plt.title('Gray Scale Image')
 
-    # Display the histogram
+    # histogram
     plt.subplot(2, 1, 2)
     plt.plot(hist, color='black')
     plt.title('Histogram')
@@ -24,6 +24,6 @@ def display_histogram(image_path):
 
     plt.show()
 
-# Example usage:
+# Main
 input_image_path = "LAB\MachineIntelligence\Cycle-1\converted_image.jpg"
 display_histogram(input_image_path)

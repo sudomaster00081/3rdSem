@@ -6,7 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def wiener_filter(image, kernel, noise_var):
-    # Perform Wiener deconvolution
+    # Wiener deconvolution
     fft_image = np.fft.fft2(image)
     fft_kernel = np.fft.fft2(kernel, s=image.shape)
     
@@ -16,21 +16,21 @@ def wiener_filter(image, kernel, noise_var):
     restored_image = np.fft.ifft2(fft_image * wiener_filter).real
     return np.uint8(np.clip(restored_image, 0, 255))
 
-# Read the blurred and noisy image
+# blurred and noisy image
 image_path = "LAB\MachineIntelligence\Cycle-1\converted_image.jpg"
 blurred_noisy_image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
 
-# Simulate a known kernel (for demonstration purposes)
+# Simulate a known kernel
 kernel_size = 5
 kernel = np.ones((kernel_size, kernel_size), np.float32) / (kernel_size**2)
 
-# Simulate known noise variance (for demonstration purposes)
+# Simulate known noise variance
 noise_var = 25.0
 
 # Perform Wiener deconvolution
 restored_image = wiener_filter(blurred_noisy_image, kernel, noise_var)
 
-# Display the results
+# Display
 plt.figure(figsize=(10, 4))
 
 plt.subplot(1, 3, 1)

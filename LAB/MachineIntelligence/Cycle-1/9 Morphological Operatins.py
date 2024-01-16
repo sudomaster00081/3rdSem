@@ -10,27 +10,26 @@ import cv2
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Read the input image
 image_path = "LAB\MachineIntelligence\Cycle-1\converted_image.jpg"
 original_image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
 
-# Define a kernel for morphological operations
+# Defining a kernel
 kernel_size = 5
 kernel = np.ones((kernel_size, kernel_size), np.uint8)
 
-# Morphological Dilation
+# Dilation
 dilated_image = cv2.dilate(original_image, kernel, iterations=1)
 
-# Morphological Erosion
+# Erosion
 eroded_image = cv2.erode(original_image, kernel, iterations=1)
 
-# Morphological Opening (Erosion followed by Dilation)
+# Opening
 opened_image = cv2.morphologyEx(original_image, cv2.MORPH_OPEN, kernel)
 
-# Morphological Closing (Dilation followed by Erosion)
+# Closing
 closed_image = cv2.morphologyEx(original_image, cv2.MORPH_CLOSE, kernel)
 
-# Display the results
+# Display
 plt.figure(figsize=(10, 6))
 
 plt.subplot(2, 3, 1)

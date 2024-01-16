@@ -5,16 +5,16 @@ import cv2
 import matplotlib.pyplot as plt
 
 def display_edge_map(image_path, low_threshold=50, high_threshold=150):
-    # Read the image in grayscale
+    # image in grayscale
     img = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
 
-    # Apply GaussianBlur to reduce noise and improve edge detection
+    # GaussianBlur
     blurred_img = cv2.GaussianBlur(img, (5, 5), 0)
 
-    # Apply Canny edge detection
+    # Canny edge detection
     edges = cv2.Canny(blurred_img, low_threshold, high_threshold)
 
-    # Display the original and edge map images
+    # Display
     plt.subplot(1, 2, 1)
     plt.imshow(img, cmap='gray')
     plt.title('Original Image')
@@ -25,6 +25,6 @@ def display_edge_map(image_path, low_threshold=50, high_threshold=150):
 
     plt.show()
 
-# Example usage:
+# Main
 input_image_path = "LAB\MachineIntelligence\Cycle-1\image.jpg"
 display_edge_map(input_image_path)

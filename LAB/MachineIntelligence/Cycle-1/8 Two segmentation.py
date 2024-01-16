@@ -28,24 +28,24 @@ plt.axis('off')
 # Generate image data for clustering
 data, _ = make_blobs(n_samples=300, centers=3, random_state=42, cluster_std=2.0)
 
-# Apply K-Means clustering
+# K-Means
 kmeans = KMeans(n_clusters=3, random_state=42)
 kmeans_labels = kmeans.fit_predict(data)
 kmeans_labels = kmeans_labels.reshape((10, 30))
 
-# Plot K-Means clustering result
+# Plot K-Means
 plt.subplot(1, 3, 2)
 plt.imshow(kmeans_labels, cmap='viridis')
 plt.title('K-Means Clustering')
 plt.axis('off')
 
-# Apply Mean Shift clustering
+# Mean Shift clustering
 bandwidth = estimate_bandwidth(data, quantile=0.2, n_samples=300)
 meanshift = MeanShift(bandwidth=bandwidth, bin_seeding=True)
 meanshift_labels = meanshift.fit_predict(data)
 meanshift_labels = meanshift_labels.reshape((10, 30))
 
-# Plot Mean Shift clustering result
+# Plot 
 plt.subplot(1, 3, 3)
 plt.imshow(meanshift_labels, cmap='viridis')
 plt.title('Mean Shift Clustering')
@@ -54,7 +54,7 @@ plt.axis('off')
 plt.tight_layout()
 plt.show()
 
-# Compare clustering results with ground truth
+# clustering results with ground truth
 nmi_kmeans = normalized_mutual_info_score(ground_truth_labels.flatten(), kmeans_labels.flatten())
 nmi_meanshift = normalized_mutual_info_score(ground_truth_labels.flatten(), meanshift_labels.flatten())
 
