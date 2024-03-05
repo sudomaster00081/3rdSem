@@ -13,6 +13,7 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 # Sample text data
 texts = ["The cat in the hat", "The quick brown fox"]
 
+
 # Tokenize and pad sequences
 tokenizer = Tokenizer()
 tokenizer.fit_on_texts(texts)

@@ -28,8 +28,9 @@ model = models.Sequential([
 
 # Compile the model
 model.compile(optimizer='adam',
-              loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+              loss= tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
               metrics=['accuracy'])
 
 # Train the model
 model.fit(x_train, y_train, epochs=10, validation_data=(x_test, y_test))
+

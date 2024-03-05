@@ -12,6 +12,7 @@ from tensorflow.keras.layers import Dense, GlobalAveragePooling2D
 from tensorflow.keras.optimizers import SGD
 from tensorflow.keras.datasets import cifar10
 
+
 # Load the CIFAR-10 dataset
 (x_train, y_train), (x_test, y_test) = cifar10.load_data()
 
@@ -32,6 +33,7 @@ model = Model(inputs=base_model.input, outputs=predictions)
 model.compile(optimizer=SGD(lr=0.001, momentum=0.9), 
               loss='sparse_categorical_crossentropy', 
               metrics=['accuracy'])
+
 
 # Train the model
 model.fit(x_train, y_train, epochs=5, validation_data=(x_test, y_test))

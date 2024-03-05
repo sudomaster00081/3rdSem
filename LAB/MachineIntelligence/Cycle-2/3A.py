@@ -34,5 +34,6 @@ model.compile(optimizer=SGD(lr=0.001, momentum=0.9),
               loss='sparse_categorical_crossentropy', 
               metrics=['accuracy'])
 
+
 # Train the model
 model.fit(x_train, y_train, epochs=5, validation_data=(x_test, y_test))

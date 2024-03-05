@@ -17,6 +17,7 @@ x_train, x_test = x_train / 255.0, x_test / 255.0
 x_train_flat = x_train.reshape((len(x_train), -1))
 x_test_flat = x_test.reshape((len(x_test), -1))
 
+
 # Define the autoencoder model
 input_img = Input(shape=(784,))
 encoded = Dense(128, activation='relu')(input_img)

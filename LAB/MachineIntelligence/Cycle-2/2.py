@@ -10,6 +10,7 @@ base_model = VGG16(weights='imagenet')
 # Remove the last layer (classification layer) to use it for feature extraction
 model = Model(inputs=base_model.input, outputs=base_model.get_layer('block5_pool').output)
 
+
 # Example: Load an image and extract features
 img_path = 'path_to_your_image.jpg'
 img = image.load_img(img_path, target_size=(224, 224))

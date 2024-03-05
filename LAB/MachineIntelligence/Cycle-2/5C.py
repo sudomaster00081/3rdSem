@@ -24,6 +24,7 @@ tokenizer = Tokenizer()
 tokenizer.fit_on_texts(captions)
 total_words = len(tokenizer.word_index) + 1
 
+
 input_sequences = tokenizer.texts_to_sequences(captions)
 max_sequence_length = max([len(seq) for seq in input_sequences])
 padded_sequences = pad_sequences(input_sequences, maxlen=max_sequence_length, padding='post')
