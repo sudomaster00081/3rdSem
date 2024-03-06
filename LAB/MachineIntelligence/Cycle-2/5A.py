@@ -1,5 +1,5 @@
 # ImplementingGenerative Models:
-# a) Autoencoder for image reconstruction
+# a) Autoencoder for image reconstruction*
 # b) Word Prediction using RNN
 # c) Image Captioning
 
@@ -17,7 +17,6 @@ x_train, x_test = x_train / 255.0, x_test / 255.0
 x_train_flat = x_train.reshape((len(x_train), -1))
 x_test_flat = x_test.reshape((len(x_test), -1))
 
-
 # Define the autoencoder model
 input_img = Input(shape=(784,))
 encoded = Dense(128, activation='relu')(input_img)
@@ -28,7 +27,7 @@ autoencoder = Model(input_img, decoded)
 autoencoder.compile(optimizer='adam', loss='binary_crossentropy')
 
 # Train the autoencoder
-autoencoder.fit(x_train_flat, x_train_flat, epochs=10, batch_size=256, shuffle=True, validation_data=(x_test_flat, x_test_flat))
+autoencoder.fit(x_train_flat, x_train_flat, epochs=100, batch_size=256, shuffle=True, validation_data=(x_test_flat, x_test_flat))
 
 # Encode and decode some digits
 decoded_imgs = autoencoder.predict(x_test_flat)

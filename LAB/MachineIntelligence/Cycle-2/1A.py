@@ -1,6 +1,6 @@
 # Build a small Convolutional Neural Network (CNN) model using any of deep
 # libraries for:
-# a) Image Recognition/ Classification
+# a) Image Recognition/ Classification*
 # b) Digit Identification
 
 
@@ -28,9 +28,8 @@ model = models.Sequential([
 
 # Compile the model
 model.compile(optimizer='adam',
-              loss= tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+              loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
               metrics=['accuracy'])
 
 # Train the model
-model.fit(x_train, y_train, epochs=10, validation_data=(x_test, y_test))
-
+model.fit(x_train, y_train, epochs=100, validation_data=(x_test, y_test))

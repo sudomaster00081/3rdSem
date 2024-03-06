@@ -1,65 +1,46 @@
-# Practicing various strategies of fine tuning
+# Practicing various strategies of fine tuning*
 
+# Install necessary libraries
+# !pip install tensorflow
+
+# Import libraries
 import tensorflow as tf
-from tensorflow.keras.applications import VGG16
-from tensorflow.keras.layers import Dense, GlobalAveragePooling2D
-from tensorflow.keras.models import Model
-from tensorflow.keras.optimizers import SGD
-from tensorflow.keras.datasets import cifar10
+from tensorflow.keras import layers, models, datasets
+from tensorflow.keras.optimizers import Adam
 
-# Load the CIFAR-10 dataset
-(x_train, y_train), (x_test, y_test) = cifar10.load_data()
+# Load and preprocess CIFAR-10 dataset
+(train_images, train_labels), (test_images, test_labels) = datasets.cifar10.load_data()
+train_images, test_images = train_images / 255.0, test_images / 255.0
 
-# Normalize pixel values to be between 0 and 1
-x_train, x_test = x_train / 255.0, x_test / 255.0
+# Define a simple convolutional neural network (CNN)
+def create_model():
+    model = models.Sequential()
+    model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(32, 32, 3)))
+    model.add(layers.MaxPooling2D((2, 2)))
+    model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+    model.add(layers.MaxPooling2D((2, 2)))
+    model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+    model.add(layers.Flatten())
+    model.add(layers.Dense(64, activation='relu'))
+    model.add(layers.Dense(10))
+    return model
 
-# Load the pre-trained VGG-16 model without the top (classification) layer
-base_model = VGG16(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
-
-# Freeze the layers of the pre-trained model
-for layer in base_model.layers:
-    layer.trainable = False
-
-# Add a custom top (classification) layer for CIFAR-10
-x = GlobalAveragePooling2D()(base_model.output)
-x = Dense(1024, activation='relu')(x)
-predictions = Dense(10, activation='softmax')(x)
-
-model = Model(inputs=base_model.input, outputs=predictions)
+# Create the model
+model = create_model()
 
 # Compile the model
-model.compile(optimizer=SGD(lr=0.001, momentum=0.9), 
-              loss='sparse_categorical_crossentropy', 
+model.compile(optimizer='adam',
+              loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
               metrics=['accuracy'])
 
-# Train only the custom top layer
-model.fit(x_train, y_train, epochs=5, validation_data=(x_test, y_test))
+# Train the model
+history = model.fit(train_images, train_labels, epochs=100, validation_data=(test_images, test_labels))
 
+# Print epoch details and accuracy
+print("Epoch Details:")
+print(history.history)
 
-# Assume you have trained the model with the previous code snippet
+# Evaluate the model on the test set
+test_loss, test_acc = model.evaluate(test_images, test_labels, verbose=2)
+print(f"\nTest Accuracy: {test_acc}")
 
-# Unfreeze the last few layers for fine-tuning
-for layer in model.layers[-4:]:
-    layer.trainable = True
-
-# Recompile the model to apply the changes
-model.compile(optimizer=SGD(lr=0.0001, momentum=0.9),  # Use a smaller learning rate
-              loss='sparse_categorical_crossentropy', 
-              metrics=['accuracy'])
-
-# Fine-tune the model
-model.fit(x_train, y_train, epochs=5, validation_data=(x_test, y_test))
-
-
-# Unfreeze all layers for fine-tuning
-for layer in model.layers:
-    layer.trainable = True
-
-# Recompile the model to apply the changes
-model.compile(optimizer=SGD(lr=0.00001, momentum=0.9),  # Use a smaller learning rate
-              loss='sparse_categorical_crossentropy', 
-              metrics=['accuracy'])
-
-
-# Fine-tune the entire model
-model.fit(x_train, y_train, epochs=5, validation_data=(x_test, y_test))

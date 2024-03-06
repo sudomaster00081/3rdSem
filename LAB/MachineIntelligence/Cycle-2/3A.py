@@ -1,39 +1,91 @@
 # Implementation of Pre-trained CNN models using transfer learning for
 # classification/object detections.
-# a) AlexNet
+# a) AlexNet *
 # b) VGG-16
 
 
-import tensorflow as tf
-from tensorflow.keras.applications import AlexNet
-from tensorflow.keras.preprocessing import image
-from tensorflow.keras.applications.alexnet import preprocess_input, decode_predictions
-from tensorflow.keras.models import Model
-from tensorflow.keras.layers import Dense, GlobalAveragePooling2D
-from tensorflow.keras.optimizers import SGD
-from tensorflow.keras.datasets import cifar10
 
-# Load the CIFAR-10 dataset
-(x_train, y_train), (x_test, y_test) = cifar10.load_data()
+import torch
+import torchvision.models as models
+import torchvision.transforms as transforms
+from torchvision.datasets import CIFAR10
+from torch.utils.data import DataLoader
 
-# Normalize pixel values to be between 0 and 1
-x_train, x_test = x_train / 255.0, x_test / 255.0
+# Load and preprocess the CIFAR-10 dataset
+transform = transforms.Compose([
+    transforms.Resize((224, 224)),
+    transforms.ToTensor(),
+    transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
+])
 
-# Load the pre-trained AlexNet model without the top (classification) layer
-base_model = AlexNet(weights='imagenet', include_top=False, input_shape=(227, 227, 3))
+train_dataset = CIFAR10(root='./data', train=True, download=True, transform=transform)
+test_dataset = CIFAR10(root='./data', train=False, download=True, transform=transform)
 
-# Add a custom top (classification) layer for CIFAR-10
-x = GlobalAveragePooling2D()(base_model.output)
-x = Dense(1024, activation='relu')(x)
-predictions = Dense(10, activation='softmax')(x)
+train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
+test_loader = DataLoader(test_dataset, batch_size=32, shuffle=False)
 
-model = Model(inputs=base_model.input, outputs=predictions)
+# Load the pre-trained AlexNet model
+alexnet_model = models.alexnet(pretrained=True)
 
-# Compile the model
-model.compile(optimizer=SGD(lr=0.001, momentum=0.9), 
-              loss='sparse_categorical_crossentropy', 
-              metrics=['accuracy'])
+# Adjust the last layer for the CIFAR-10 dataset
+num_classes = 10
+alexnet_model.classifier[6] = torch.nn.Linear(4096, num_classes)
 
+# Display the modified model architecture
+print(alexnet_model)
+
+# Set the device (CPU or GPU)
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+alexnet_model = alexnet_model.to(device)
+
+# Define the loss function and optimizer
+criterion = torch.nn.CrossEntropyLoss()
+optimizer = torch.optim.Adam(alexnet_model.parameters(), lr=0.001)
 
 # Train the model
-model.fit(x_train, y_train, epochs=5, validation_data=(x_test, y_test))
+num_epochs = 10
+for epoch in range(num_epochs):
+    alexnet_model.train()  # Set the model to training mode
+    running_loss = 0.0
+    correct_train = 0
+    total_train = 0
+
+    for images, labels in train_loader:
+        images, labels = images.to(device), labels.to(device)
+
+        optimizer.zero_grad()
+        outputs = alexnet_model(images)
+        loss = criterion(outputs, labels)
+        loss.backward()
+        optimizer.step()
+
+        running_loss += loss.item()
+
+        _, predicted_train = torch.max(outputs.data, 1)
+        total_train += labels.size(0)
+        correct_train += (predicted_train == labels).sum().item()
+
+    # Calculate training accuracy and loss for the current epoch
+    train_accuracy = correct_train / total_train
+    avg_train_loss = running_loss / len(train_loader)
+
+    print(f"Epoch {epoch + 1}/{num_epochs}, "
+          f"Train Loss: {avg_train_loss:.4f}, "
+          f"Train Accuracy: {train_accuracy:.4f}")
+
+    # Evaluate the model on the test set
+    alexnet_model.eval()  # Set the model to evaluation mode
+    correct_test = 0
+    total_test = 0
+
+    with torch.no_grad():
+        for images, labels in test_loader:
+            images, labels = images.to(device), labels.to(device)
+            outputs = alexnet_model(images)
+            _, predicted_test = torch.max(outputs.data, 1)
+            total_test += labels.size(0)
+            correct_test += (predicted_test == labels).sum().item()
+
+    # Calculate testing accuracy for the current epoch
+    test_accuracy = correct_test / total_test
+    print(f"Test Accuracy: {test_accuracy:.4f}")
